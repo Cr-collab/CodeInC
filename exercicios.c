@@ -1,48 +1,40 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 
 int main()
 {
-  int tam = 4;
-  int matriz[tam][tam];
+  char palavra[30], copia[30];
+  int i, tam, iguais = 0;
 
-  srand(time(NULL));
-  // gerando matriz
-  for (int i = 0; i < tam; i++)
+  printf("Digite uma palavra  :");
+  scanf("%s", palavra);
+  tam = strlen(palavra);
+  for (i = 0; i < strlen(palavra); i++)
   {
-    for (int j = 0; j < tam; j++)
+    copia[i] = palavra[tam - 1];
+    tam--;
+  }
+  copia[i] = '\0';
+  tam = strlen(palavra);
+  for (i = 0; i < tam; i++)
+  {
+    if (palavra[i] == copia[i])
     {
-      matriz[i][j] = rand() % 100;
+      iguais++;
     }
   }
-  // mostrndo matriz é gerada
-  for (int i = 0; i < tam; i++)
+
+  if (tam == iguais)
   {
-    for (int j = 0; j < tam; j++)
-    {
-      printf("%2d | ", matriz[i][j]);
-    }
-    printf("\n\n");
+    printf("\n Eh palindroma");
   }
-
-  // printando diagonal abaixo da principal
-
-  for (int i = 0; i < tam; i++)
+  else
   {
-    for (int j = 0; j < tam; j++)
-    {
-      if (i > j)
-      {
-
-        printf("%2d | ", matriz[i][j]);
-      }
-      else
-      {
-        printf("|__| ");
-      }
-    }
-    printf("\n\n");
+    printf("\nNão eh palindroma");
   }
   return 0;
 }
