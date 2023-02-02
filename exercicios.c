@@ -13,28 +13,31 @@ int main()
   printf("Digite uma palavra  :");
   scanf("%s", palavra);
   tam = strlen(palavra);
-  for (i = 0; i < strlen(palavra); i++)
+  tam--;
+
+  i = 0;
+
+  while (tam >= i)
   {
-    copia[i] = palavra[tam - 1];
-    tam--;
-  }
-  copia[i] = '\0';
-  tam = strlen(palavra);
-  for (i = 0; i < tam; i++)
-  {
-    if (palavra[i] == copia[i])
+    printf("%d >= %d\n", tam, i);
+    printf("%c != %c\n", palavra[i], palavra[tam]);
+    if (palavra[i] != palavra[tam])
     {
       iguais++;
     }
+    printf("%d\n", iguais);
+    i++;
+    tam--;
   }
 
-  if (tam == iguais)
+  if (iguais != 0)
   {
-    printf("\n Eh palindroma");
+    printf("\n Não eh palidroma");
   }
   else
   {
-    printf("\nNão eh palindroma");
+    printf("\n  eh palidroma");
   }
+
   return 0;
 }
